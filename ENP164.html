@@ -31,7 +31,7 @@ input{
 
 
 	<div id="quest" style="display:none;">
-	Memorize this sequence of number:
+	Memorize this sequence of number: </br>
 	<input type="number" id="myNumber1" size="1" value="0">
 	<input type="number" id="myNumber2" value="0">
 	<input type="number" id="myNumber3" value="0">
@@ -45,7 +45,7 @@ input{
 </div>
 
 	<div id="ans" style="display:none;">
-	Enter the sequence of number you memorized:
+	Enter the sequence of number you memorized:</br>
 	<input type="number" id="input1" size="1" value="0">
 	<input type="number" id="input2" value="0">
 	<input type="number" id="input3" value="0">
@@ -69,6 +69,7 @@ input{
 		var randomizer=0;
 		var count10=0;
 		var count20=0;
+		var text='';
 
 function setTimerAndStart(){
 
@@ -169,23 +170,23 @@ function Next() {
 		  inum[9]=document.getElementById("input10").value;
 
 		addScore();
-	randomizer=Math.floor(Math.random() * Math.floor(10));
-	if (randomizer%2==0){
-		if(count10<5){
-		timer=10;
+		randomizer=Math.floor(Math.random() * Math.floor(10));
+		if (randomizer%2==0){
+			if(count10<5){
+			timer=10;
+			}
+			else{
+			timer=20;
+			}
 		}
 		else{
-		timer=20;
+			if(count20<5){
+			timer=20;
+			}
+			else{
+			timer=10;
+			}
 		}
-	}
-	else{
-		if(count20<5){
-		timer=20;
-		}
-		else{
-		timer=10;
-		}
-	}
 		generate();
 		setTimeout(toggle, timer*1000);
 		}
@@ -195,6 +196,20 @@ function Next() {
 	document.getElementById("quest").style.display="none";
 	document.getElementById("ans").style.display="none";
 	document.getElementById("setstart").style.display="block";
+	
+	var i;
+	for (i=0;i<10;i++){
+		text=t[i].toString()+','+score[i].toString()+'\n';
+	}
+
+
+blob = new Blob([text], { type: 'text/plain' }),
+anchor = document.createElement('a');
+
+anchor.download = "data.csv";
+anchor.href = (window.webkitURL || window.URL).createObjectURL(blob);
+anchor.dataset.downloadurl = ['text/plain', anchor.download, anchor.href].join(':');
+anchor.click();
 
 	}
 }
