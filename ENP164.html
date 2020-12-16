@@ -1,0 +1,217 @@
+<html>
+<head>
+	<title>Memory Test
+	</title>
+
+</head>
+<body>
+<style>
+input{
+  width: 50px;
+  font-size: 35px;
+  text-align:  center;
+}
+
+#quest,#ans{
+	padding-top: 50px;
+	align-items: center;
+	margin-right: auto;
+	margin-left:auto;
+
+
+}
+
+
+
+</style>
+<div>
+	<div id="setstart">
+	<button onclick="setTimerAndStart()">Start</button>
+	</div>
+
+
+	<div id="quest" style="display:none;">
+	Memorize this sequence of number:
+	<input type="number" id="myNumber1" size="1" value="0">
+	<input type="number" id="myNumber2" value="0">
+	<input type="number" id="myNumber3" value="0">
+	<input type="number" id="myNumber4" value="0">
+	<input type="number" id="myNumber5" value="0">
+	<input type="number" id="myNumber6" value="0">
+	<input type="number" id="myNumber7" value="0">
+	<input type="number" id="myNumber8" value="0">
+	<input type="number" id="myNumber9" value="0">
+	<input type="number" id="myNumber10" value="0">
+</div>
+
+	<div id="ans" style="display:none;">
+	Enter the sequence of number you memorized:
+	<input type="number" id="input1" size="1" value="0">
+	<input type="number" id="input2" value="0">
+	<input type="number" id="input3" value="0">
+	<input type="number" id="input4" value="0">
+	<input type="number" id="input5" value="0">
+	<input type="number" id="input6" value="0">
+	<input type="number" id="input7" value="0">
+	<input type="number" id="input8" value="0">
+	<input type="number" id="input9" value="0">
+	<input type="number" id="input10" value="0">
+	<button onclick="Next()">Next</button>
+</div>
+
+	<script>
+		var num=[0,0,0,0,0,0,0,0,0,0];
+		var inum=[0,0,0,0,0,0,0,0,0,0];
+		var score=[0,0,0,0,0,0,0,0,0,0];
+		var t=[0,0,0,0,0,0,0,0,0,0];
+		var j=0;
+		var timer=10;
+		var randomizer=0;
+		var count10=0;
+		var count20=0;
+
+function setTimerAndStart(){
+
+
+	document.getElementById("quest").style.display="block";
+	document.getElementById("ans").style.display="none";
+	document.getElementById("setstart").style.display="none";
+
+
+	randomizer=Math.floor(Math.random() * Math.floor(10));
+	if (randomizer%2==0){
+		if(count10<5){
+		timer=10;
+		}
+		else{
+		timer=20;
+		}
+	}
+	else{
+		if(count20<5){
+		timer=20;
+		}
+		else{
+		timer=10;
+		}
+	}
+	generate();
+	setTimeout(toggle, timer*1000);
+}
+
+
+function toggle(){
+
+  var q = document.getElementById("quest");
+  var a = document.getElementById("ans");
+
+  if (q.style.display === "none") {
+    q.style.display = "block";
+  } else {
+    q.style.display = "none";
+  }
+
+   if (a.style.display === "none") {
+    a.style.display = "block";
+  } else {
+    a.style.display = "none";
+  }
+}
+
+
+function generate() {
+
+	num[0]=Math.floor(Math.random() * Math.floor(10));
+	num[1]=Math.floor(Math.random() * Math.floor(10));
+	num[2]=Math.floor(Math.random() * Math.floor(10));
+	num[3]=Math.floor(Math.random() * Math.floor(10));
+	num[4]=Math.floor(Math.random() * Math.floor(10));
+	num[5]=Math.floor(Math.random() * Math.floor(10));
+	num[6]=Math.floor(Math.random() * Math.floor(10));
+	num[7]=Math.floor(Math.random() * Math.floor(10));
+	num[8]=Math.floor(Math.random() * Math.floor(10));
+	num[9]=Math.floor(Math.random() * Math.floor(10));
+
+	display();
+}
+function display() {
+  document.getElementById("myNumber1").value = num[0];
+  document.getElementById("myNumber2").value = num[1];
+  document.getElementById("myNumber3").value = num[2];
+  document.getElementById("myNumber4").value = num[3];
+  document.getElementById("myNumber5").value = num[4];
+  document.getElementById("myNumber6").value = num[5];
+  document.getElementById("myNumber7").value = num[6];
+  document.getElementById("myNumber8").value = num[7];
+  document.getElementById("myNumber9").value = num[8];
+  document.getElementById("myNumber10").value = num[9];
+
+}
+
+
+
+function Next() {
+
+	if (j<10){
+		console.log(timer);
+
+		  toggle();
+
+		  inum[0]=document.getElementById("input1").value;
+		  inum[1]=document.getElementById("input2").value;
+		  inum[2]=document.getElementById("input3").value;
+		  inum[3]=document.getElementById("input4").value;
+		  inum[4]=document.getElementById("input5").value;
+		  inum[5]=document.getElementById("input6").value;
+		  inum[6]=document.getElementById("input7").value;
+		  inum[7]=document.getElementById("input8").value;
+		  inum[8]=document.getElementById("input9").value;
+		  inum[9]=document.getElementById("input10").value;
+
+		addScore();
+	randomizer=Math.floor(Math.random() * Math.floor(10));
+	if (randomizer%2==0){
+		if(count10<5){
+		timer=10;
+		}
+		else{
+		timer=20;
+		}
+	}
+	else{
+		if(count20<5){
+		timer=20;
+		}
+		else{
+		timer=10;
+		}
+	}
+		generate();
+		setTimeout(toggle, timer*1000);
+		}
+
+	else{
+	console.log(t,score);
+	document.getElementById("quest").style.display="none";
+	document.getElementById("ans").style.display="none";
+	document.getElementById("setstart").style.display="block";
+
+	}
+}
+
+function addScore(){
+	var i;
+	for (i=0;i<10;i++){
+		if(num[i]==Number(inum[i])){
+			score[j]=score[j]+1;
+
+		}
+	t[j]=timer;
+	}
+	j=j+1;
+}
+
+
+</script>
+</body>
+</html>
