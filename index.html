@@ -84,8 +84,8 @@ input{
 		var higher=8;
 
 function setTimerAndStart(){
-	lower=document.getElementById("low");
-	higher=document.getElementById("high");
+	lower=Number(document.getElementById("low"));
+	higher=Number(document.getElementById("high"));
 
 	document.getElementById("quest").style.display="block";
 	document.getElementById("ans").style.display="none";
@@ -192,7 +192,7 @@ function Next() {
 
 		  var i;
 			for(i=0;i<10;i++){
-				entered[j]=entered[j]*10+inum[i];
+				entered[j]=entered[j]*10+Number(inum[i]);
 			}
 
 		addScore();
