@@ -84,9 +84,9 @@ input{
 		var higher=8;
 
 function setTimerAndStart(){
-	lower=Number(document.getElementById("low"));
-	higher=Number(document.getElementById("high"));
-
+	lower=Number(document.getElementById("low").value);
+	higher=Number(document.getElementById("high").value);
+	console.log(lower,higher);
 	document.getElementById("quest").style.display="block";
 	document.getElementById("ans").style.display="none";
 	document.getElementById("setstart").style.display="none";
