@@ -72,12 +72,14 @@ input{
 		var inum=[0,0,0,0,0,0,0,0,0,0];
 		var score=[0,0,0,0,0,0,0,0,0,0];
 		var t=[0,0,0,0,0,0,0,0,0,0];
+		var given=[0,0,0,0,0,0,0,0,0,0];
+		var entered=[0,0,0,0,0,0,0,0,0,0];
 		var j=0;
 		var timer=10;
 		var randomizer=0;
 		var count10=0;
 		var count20=0;
-		var text="delay , correct_entries \n";
+		var text="given, entered, delay , correct_entries \n";
 		var lower=5;
 		var higher=8;
 
@@ -148,7 +150,10 @@ function generate() {
 	num[7]=Math.floor(Math.random() * Math.floor(10));
 	num[8]=Math.floor(Math.random() * Math.floor(10));
 	num[9]=Math.floor(Math.random() * Math.floor(10));
-
+	var i;
+	for(i=0;i<10;i++){
+		given[j]=given[j]*10+num[i];
+	}
 	display();
 }
 function display() {
@@ -185,7 +190,10 @@ function Next() {
 		  inum[8]=document.getElementById("input9").value;
 		  inum[9]=document.getElementById("input10").value;
 
-
+		  var i;
+			for(i=0;i<10;i++){
+				entered[j]=entered[j]*10+inum[i];
+			}
 
 		addScore();
 		randomizer=Math.floor(Math.random() * Math.floor(10));
@@ -222,7 +230,7 @@ function Next() {
 	
 	var i;
 	for (i=0;i<10;i++){
-		text=text + t[i].toString()+','+score[i].toString()+'\n';
+		text=text + given[i].toString() + ',' + entered[i].toString() + ',' + t[i].toString()+','+score[i].toString()+'\n';
 	}
 
 
