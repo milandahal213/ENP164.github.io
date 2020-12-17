@@ -73,7 +73,9 @@ input{
 		var randomizer=0;
 		var count10=0;
 		var count20=0;
-		var text='';
+		var text="delay , correct_entries \n";
+		var lower=5;
+		var higher=8;
 
 function setTimerAndStart(){
 
@@ -87,21 +89,21 @@ function setTimerAndStart(){
 	console.log(randomizer);
 	if (randomizer%2==0){
 		if(count10<5){
-		timer=10;
+		timer=lower;
 		count10=count10+1;
 		}
 		else{
-		timer=20;
+		timer=higher;
 		count20=count20+1;
 		}
 	}
 	else{
 		if(count20<5){
-		timer=20;
+		timer=higher;
 		count20=count20+1;
 		}
 		else{
-		timer=10;
+		timer=lower;
 		count10=count10+1;
 		}
 	}
@@ -183,21 +185,21 @@ function Next() {
 		console.log(randomizer);
 		if (randomizer%2==0){
 			if(count10<5){
-			timer=10;
+			timer=lower;
 			count10=count10+1;
 			}
 			else{
-			timer=20;
+			timer=higher;
 			count20=count20+1;
 			}
 		}
 		else{
 			if(count20<5){
-			timer=20;
+			timer=higher;
 			count20=count20+1;
 			}
 			else{
-			timer=10;
+			timer=lower;
 			count10=count10+1;
 			}
 		}
